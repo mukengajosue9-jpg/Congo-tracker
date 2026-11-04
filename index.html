@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071522">
+  <meta name="description" content="Congo Star Tracker : personnalités, visites publiques annoncées et événements en RDC.">
+  <title>Congo Star Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Accueil Congo Star Tracker">
+      <span class="brand-mark">CST</span>
+      <span><strong>CONGO STAR</strong><small>TRACKER · RDC</small></span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+    <nav id="mainNav">
+      <a href="#carte">Carte</a><a href="#visites">Visites publiques</a><a href="#personnalites">Personnalités</a><a href="#proposer">Proposer une info</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> LA RDC CONNECTÉE AU MONDE</span>
+        <h1>Les personnalités.<br><em>Les visites. Le Congo.</em></h1>
+        <p>Retrouvez les événements publics annoncés, les visites officielles et les actualités des personnalités liées à la République démocratique du Congo.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#visites">Explorer les visites <span>↗</span></a>
+          <a class="button secondary" href="#carte">Voir la carte</a>
+        </div>
+        <p class="hero-note">Informations publiques et vérifiables uniquement.</p>
+      </div>
+      <div class="hero-visual" aria-label="Illustration de la carte de la RDC">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="congo-shape">RDC</div>
+        <span class="map-tag tag-kin">KINSHASA <b>●</b></span>
+        <span class="map-tag tag-lub">LUBUMBASHI <b>●</b></span>
+        <span class="map-tag tag-gom">GOMA <b>●</b></span>
+        <div class="visual-caption">-4.0° S&nbsp; / &nbsp;21.8° E<br><b>RÉPUBLIQUE DÉMOCRATIQUE DU CONGO</b></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>26</strong><span>PROVINCES</span></div>
+      <div><strong>01</strong><span>PAYS AU CENTRE DU PROJET</span></div>
+      <div><strong>24/7</strong><span>ACCÈS AU SITE</span></div>
+    </section>
+
+    <section class="section" id="carte">
+      <div class="section-heading">
+        <div><span class="eyebrow">EXPLORATION</span><h2>La RDC sur la carte</h2><p>Explorez les principales villes couvertes par le projet.</p></div>
+        <span class="live-label"><i></i> CARTE DES VILLES</span>
+      </div>
+      <div id="map" class="map" role="application" aria-label="Carte des villes de la RDC"></div>
+      <p class="map-disclaimer">La carte montre des villes et lieux publics, pas la position des personnes ni des avions.</p>
+    </section>
+
+    <section class="section" id="visites">
+      <div class="section-heading">
+        <div><span class="eyebrow">AGENDA PUBLIC</span><h2>Visites & événements annoncés</h2><p>Seuls les rendez-vous publics confirmés par une source fiable seront publiés.</p></div>
+        <span class="count-pill" id="eventCount">0 événement</span>
+      </div>
+      <div class="filters">
+        <input id="eventSearch" type="search" placeholder="Rechercher une personnalité, une ville..." aria-label="Rechercher un événement">
+        <select id="cityFilter" aria-label="Filtrer par ville"><option value="">Toutes les villes</option></select>
+        <select id="typeFilter" aria-label="Filtrer par catégorie"><option value="">Toutes les catégories</option><option>Concert</option><option>Sport</option><option>Culture</option><option>Officiel</option><option>Conférence</option><option>Autre</option></select>
+      </div>
+      <div id="eventList" class="event-grid"></div>
+      <div class="empty-state" id="emptyState"><div class="empty-icon">✦</div><h3>Aucun événement publié pour le moment</h3><p>Les événements apparaîtront ici après vérification de leur annonce publique.</p></div>
+    </section>
+
+    <section class="section people-section" id="personnalites">
+      <div class="section-heading">
+        <div><span class="eyebrow">ANNUAIRE</span><h2>Personnalités</h2><p>Un annuaire à construire avec des informations biographiques publiques.</p></div>
+      </div>
+      <div class="people-grid">
+        <article class="person-card"><div class="person-icon">♫</div><h3>Artistes & musique</h3><p>Musique, cinéma et divertissement.</p></article>
+        <article class="person-card"><div class="person-icon">⚽</div><h3>Sportifs</h3><p>Football, basketball et autres disciplines.</p></article>
+        <article class="person-card"><div class="person-icon">◆</div><h3>Entrepreneurs</h3><p>Innovation, entreprises et économie.</p></article>
+        <article class="person-card"><div class="person-icon">◎</div><h3>Personnalités publiques</h3><p>Visites officielles et activités publiques.</p></article>
+      </div>
+    </section>
+
+    <section class="section submit-section" id="proposer">
+      <div class="submit-copy"><span class="eyebrow">PARTICIPER</span><h2>Vous connaissez un événement public ?</h2><p>Proposez une annonce accompagnée d'une source publique. L'équipe devra vérifier les informations avant publication.</p><p class="privacy-note">Ne soumettez aucune adresse privée, position en direct, itinéraire confidentiel ou information personnelle non publique.</p></div>
+      <form id="suggestionForm" class="suggestion-form">
+        <label>Nom de la personnalité ou de l'événement<input required name="name" maxlength="100" placeholder="Ex. : Concert de ..."></label>
+        <div class="form-row">
+          <label>Ville<select required name="city"><option value="">Choisir une ville</option><option>Kinshasa</option><option>Lubumbashi</option><option>Goma</option><option>Kisangani</option><option>Kolwezi</option><option>Bukavu</option><option>Mbuji-Mayi</option><option>Matadi</option><option>Autre</option></select></label>
+          <label>Catégorie<select name="category"><option>Concert</option><option>Sport</option><option>Culture</option><option>Officiel</option><option>Conférence</option><option>Autre</option></select></label>
+        </div>
+        <label>Date annoncée<input type="date" name="date"></label>
+        <label>Lien vers une source publique<input required type="url" name="source" placeholder="https://..."></label>
+        <button class="button primary full" type="submit">Envoyer la proposition <span>↗</span></button>
+        <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">CST</span><span><strong>CONGO STAR</strong><small>TRACKER · RDC</small></span></a><p>© 2026 Congo Star Tracker. Projet indépendant d'information publique.</p><p class="footer-small">Les propositions enregistrées dans cette version de démonstration restent sur cet appareil. Elles ne sont pas envoyées à un serveur.</p></footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

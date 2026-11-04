@@ -1,0 +1,18 @@
+{
+  "name": "Congo Star Tracker",
+  "short_name": "Congo Stars",
+  "description": "Visites publiques annoncées et événements en République démocratique du Congo.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#071522",
+  "theme_color": "#071522",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
